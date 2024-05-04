@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YılmazHotelModelStoreContainer" CdmEntityContainer="YılmazHotelEntities">
+    <EntitySetMapping Name="Yonetim_kisiler">
+      <EntityTypeMapping TypeName="YılmazHotelModel.Yonetim_kisiler">
+        <MappingFragment StoreEntitySet="Yonetim_kisiler">
+          <ScalarProperty Name="yoneticiKadi" ColumnName="yoneticiKadi" />
+          <ScalarProperty Name="YoneticiID" ColumnName="YoneticiID" />
+          <ScalarProperty Name="YoneticiAdi" ColumnName="YoneticiAdi" />
+          <ScalarProperty Name="YoneticiSifre" ColumnName="YoneticiSifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteriler">
+      <EntityTypeMapping TypeName="YılmazHotelModel.Musteriler">
+        <MappingFragment StoreEntitySet="Musteriler">
+          <ScalarProperty Name="CTarih" ColumnName="CTarih" />
+          <ScalarProperty Name="hesap" ColumnName="hesap" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="gTarih" ColumnName="gTarih" />
+          <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+          <ScalarProperty Name="MusSoyadi" ColumnName="MusSoyadi" />
+          <ScalarProperty Name="Musadi" ColumnName="Musadi" />
+          <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odalar">
+      <EntityTypeMapping TypeName="YılmazHotelModel.Odalar">
+        <MappingFragment StoreEntitySet="Odalar">
+          <ScalarProperty Name="OdaDolulukDurumu" ColumnName="OdaDolulukDurumu" />
+          <ScalarProperty Name="OdaGunlukTutar" ColumnName="OdaGunlukTutar" />
+          <ScalarProperty Name="BalkonDurumu" ColumnName="BalkonDurumu" />
+          <ScalarProperty Name="BulunduguKat" ColumnName="BulunduguKat" />
+          <ScalarProperty Name="YatakSayisi" ColumnName="YatakSayisi" />
+          <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personeller">
+      <EntityTypeMapping TypeName="YılmazHotelModel.Personeller">
+        <MappingFragment StoreEntitySet="Personeller">
+          <ScalarProperty Name="PersonelMaas" ColumnName="PersonelMaas" />
+          <ScalarProperty Name="P_KulanndıgıIzın" ColumnName="P_KulanndıgıIzın" />
+          <ScalarProperty Name="PersonelBolum" ColumnName="PersonelBolum" />
+          <ScalarProperty Name="PersonelMail" ColumnName="PersonelMail" />
+          <ScalarProperty Name="PersonelTelefon" ColumnName="PersonelTelefon" />
+          <ScalarProperty Name="PersonelSoyadi" ColumnName="PersonelSoyadi" />
+          <ScalarProperty Name="PersonelAdi" ColumnName="PersonelAdi" />
+          <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stokDurumu">
+      <EntityTypeMapping TypeName="YılmazHotelModel.stokDurumu">
+        <MappingFragment StoreEntitySet="stokDurumu">
+          <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+          <ScalarProperty Name="urunVarmiYokmu" ColumnName="urunVarmiYokmu" />
+          <ScalarProperty Name="urunDurumMesaj" ColumnName="urunDurumMesaj" />
+          <ScalarProperty Name="urunAdet" ColumnName="urunAdet" />
+          <ScalarProperty Name="urunBirimi" ColumnName="urunBirimi" />
+          <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+          <ScalarProperty Name="urunGno" ColumnName="urunGno" />
+          <ScalarProperty Name="urunID" ColumnName="urunID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="urunGrup">
+      <EntityTypeMapping TypeName="YılmazHotelModel.urunGrup">
+        <MappingFragment StoreEntitySet="urunGrup">
+          <ScalarProperty Name="urunKategoriAdi" ColumnName="urunKategoriAdi" />
+          <ScalarProperty Name="urunGno" ColumnName="urunGno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yekili_Kisiler">
+      <EntityTypeMapping TypeName="YılmazHotelModel.Yekili_Kisiler">
+        <MappingFragment StoreEntitySet="Yekili_Kisiler">
+          <ScalarProperty Name="YetkiliSifre" ColumnName="YetkiliSifre" />
+          <ScalarProperty Name="YetkiliKadi" ColumnName="YetkiliKadi" />
+          <ScalarProperty Name="YetkiliAdi" ColumnName="YetkiliAdi" />
+          <ScalarProperty Name="YoneticiID" ColumnName="YoneticiID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

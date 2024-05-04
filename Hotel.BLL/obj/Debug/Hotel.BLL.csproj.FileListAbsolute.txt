@@ -1,0 +1,15 @@
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.BLL.dll.config
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.BLL.dll
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.BLL.pdb
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\EntityFramework.dll
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.DAL.dll
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.DAL.pdb
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\Hotel.DAL.dll.config
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\EntityFramework.xml
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\obj\Debug\Hotel.BLL.csprojAssemblyReference.cache
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\obj\Debug\Hotel.BLL.csproj.CoreCompileInputs.cache
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\obj\Debug\Hotel.BLL.csproj.CopyComplete
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\obj\Debug\Hotel.BLL.dll
+C:\Users\OEM\source\repos\YılmazHotel\Hotel.BLL\obj\Debug\Hotel.BLL.pdb

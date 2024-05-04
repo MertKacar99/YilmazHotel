@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YılmazHotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Musadi" Type="nvarchar" MaxLength="25" />
+          <Property Name="MusSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="OdaNo" Type="int" />
+          <Property Name="gTarih" Type="datetime" />
+          <Property Name="telefon" Type="nvarchar" MaxLength="20" />
+          <Property Name="hesap" Type="money" />
+          <Property Name="CTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Odalar">
+          <Key>
+            <PropertyRef Name="OdaNo" />
+          </Key>
+          <Property Name="OdaNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YatakSayisi" Type="nvarchar" MaxLength="10" />
+          <Property Name="BulunduguKat" Type="nvarchar" MaxLength="10" />
+          <Property Name="BalkonDurumu" Type="bit" />
+          <Property Name="OdaGunlukTutar" Type="money" />
+          <Property Name="OdaDolulukDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="PersonelNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelAdi" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelSoyadi" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelTelefon" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelMail" Type="nvarchar" MaxLength="30" />
+          <Property Name="PersonelBolum" Type="nvarchar" MaxLength="30" />
+          <Property Name="P_KulanndıgıIzın" Type="int" />
+          <Property Name="PersonelMaas" Type="money" />
+        </EntityType>
+        <EntityType Name="stokDurumu">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunGno" Type="int" />
+          <Property Name="urunAdi" Type="nvarchar" MaxLength="60" />
+          <Property Name="urunBirimi" Type="nvarchar" MaxLength="10" />
+          <Property Name="urunAdet" Type="int" />
+          <Property Name="urunDurumMesaj" Type="nvarchar" MaxLength="70" />
+          <Property Name="urunVarmiYokmu" Type="bit" />
+          <Property Name="urunFiyat" Type="money" />
+        </EntityType>
+        <EntityType Name="urunGrup">
+          <Key>
+            <PropertyRef Name="urunGno" />
+          </Key>
+          <Property Name="urunGno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunKategoriAdi" Type="nvarchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="Yekili_Kisiler">
+          <Key>
+            <PropertyRef Name="YoneticiID" />
+          </Key>
+          <Property Name="YoneticiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YetkiliAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliKadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="YetkiliSifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Yonetim_kisiler">
+          <Key>
+            <PropertyRef Name="YoneticiID" />
+          </Key>
+          <Property Name="YoneticiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YoneticiAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="yoneticiKadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="YoneticiSifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Musterile__OdaNo__7F2BE32F">
+          <End Role="Odalar" Type="Self.Odalar" Multiplicity="0..1" />
+          <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odalar">
+              <PropertyRef Name="OdaNo" />
+            </Principal>
+            <Dependent Role="Musteriler">
+              <PropertyRef Name="OdaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__stokDurum__urunG__17F790F9">
+          <End Role="urunGrup" Type="Self.urunGrup" Multiplicity="0..1" />
+          <End Role="stokDurumu" Type="Self.stokDurumu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunGrup">
+              <PropertyRef Name="urunGno" />
+            </Principal>
+            <Dependent Role="stokDurumu">
+              <PropertyRef Name="urunGno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YılmazHotelModelStoreContainer">
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odalar" EntityType="Self.Odalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stokDurumu" EntityType="Self.stokDurumu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunGrup" EntityType="Self.urunGrup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yekili_Kisiler" EntityType="Self.Yekili_Kisiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yonetim_kisiler" EntityType="Self.Yonetim_kisiler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Musterile__OdaNo__7F2BE32F" Association="Self.FK__Musterile__OdaNo__7F2BE32F">
+            <End Role="Odalar" EntitySet="Odalar" />
+            <End Role="Musteriler" EntitySet="Musteriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__stokDurum__urunG__17F790F9" Association="Self.FK__stokDurum__urunG__17F790F9">
+            <End Role="urunGrup" EntitySet="urunGrup" />
+            <End Role="stokDurumu" EntitySet="stokDurumu" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YılmazHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Yonetim_kisiler">
+          <Key>
+            <PropertyRef Name="YoneticiID" />
+          </Key>
+          <Property Name="YoneticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YoneticiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YoneticiSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yoneticiKadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="YılmazHotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Yonetim_kisiler" EntityType="Self.Yonetim_kisiler" />
+          <EntitySet Name="Musteriler" EntityType="YılmazHotelModel.Musteriler" />
+          <EntitySet Name="Odalar" EntityType="YılmazHotelModel.Odalar" />
+          <AssociationSet Name="FK__Musterile__OdaNo__7F2BE32F" Association="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F">
+            <End Role="Odalar" EntitySet="Odalar" />
+            <End Role="Musteriler" EntitySet="Musteriler" />
+          </AssociationSet>
+          <EntitySet Name="Personeller" EntityType="YılmazHotelModel.Personeller" />
+          <EntitySet Name="stokDurumu" EntityType="YılmazHotelModel.stokDurumu" />
+          <EntitySet Name="urunGrup" EntityType="YılmazHotelModel.urunGrup" />
+          <AssociationSet Name="FK__stokDurum__urunG__17F790F9" Association="YılmazHotelModel.FK__stokDurum__urunG__17F790F9">
+            <End Role="urunGrup" EntitySet="urunGrup" />
+            <End Role="stokDurumu" EntitySet="stokDurumu" />
+          </AssociationSet>
+          <EntitySet Name="Yekili_Kisiler" EntityType="YılmazHotelModel.Yekili_Kisiler" />
+        </EntityContainer>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Musadi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MusSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OdaNo" Type="Int32" />
+          <Property Name="gTarih" Type="DateTime" Precision="3" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="hesap" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Odalar" Relationship="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F" FromRole="Musteriler" ToRole="Odalar" />
+        </EntityType>
+        <EntityType Name="Odalar">
+          <Key>
+            <PropertyRef Name="OdaNo" />
+          </Key>
+          <Property Name="OdaNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YatakSayisi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BulunduguKat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BalkonDurumu" Type="Boolean" />
+          <Property Name="OdaGunlukTutar" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OdaDolulukDurumu" Type="Boolean" />
+          <NavigationProperty Name="Musteriler" Relationship="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F" FromRole="Odalar" ToRole="Musteriler" />
+        </EntityType>
+        <Association Name="FK__Musterile__OdaNo__7F2BE32F">
+          <End Type="YılmazHotelModel.Odalar" Role="Odalar" Multiplicity="0..1" />
+          <End Type="YılmazHotelModel.Musteriler" Role="Musteriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odalar">
+              <PropertyRef Name="OdaNo" />
+            </Principal>
+            <Dependent Role="Musteriler">
+              <PropertyRef Name="OdaNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="PersonelNo" />
+          </Key>
+          <Property Name="PersonelNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelTelefon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelMail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelBolum" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="P_KulanndıgıIzın" Type="Int32" />
+          <Property Name="PersonelMaas" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="stokDurumu">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunGno" Type="Int32" />
+          <Property Name="urunAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="urunBirimi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="urunAdet" Type="Int32" />
+          <Property Name="urunDurumMesaj" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="urunVarmiYokmu" Type="Boolean" />
+          <Property Name="urunFiyat" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="urunGrup" Relationship="YılmazHotelModel.FK__stokDurum__urunG__17F790F9" FromRole="stokDurumu" ToRole="urunGrup" />
+        </EntityType>
+        <EntityType Name="urunGrup">
+          <Key>
+            <PropertyRef Name="urunGno" />
+          </Key>
+          <Property Name="urunGno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunKategoriAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stokDurumu" Relationship="YılmazHotelModel.FK__stokDurum__urunG__17F790F9" FromRole="urunGrup" ToRole="stokDurumu" />
+        </EntityType>
+        <Association Name="FK__stokDurum__urunG__17F790F9">
+          <End Type="YılmazHotelModel.urunGrup" Role="urunGrup" Multiplicity="0..1" />
+          <End Type="YılmazHotelModel.stokDurumu" Role="stokDurumu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urunGrup">
+              <PropertyRef Name="urunGno" />
+            </Principal>
+            <Dependent Role="stokDurumu">
+              <PropertyRef Name="urunGno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Yekili_Kisiler">
+          <Key>
+            <PropertyRef Name="YoneticiID" />
+          </Key>
+          <Property Name="YoneticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YetkiliAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliKadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YetkiliSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YılmazHotelModelStoreContainer" CdmEntityContainer="YılmazHotelEntities">
+          <EntitySetMapping Name="Yonetim_kisiler">
+            <EntityTypeMapping TypeName="YılmazHotelModel.Yonetim_kisiler">
+              <MappingFragment StoreEntitySet="Yonetim_kisiler">
+                <ScalarProperty Name="yoneticiKadi" ColumnName="yoneticiKadi" />
+                <ScalarProperty Name="YoneticiID" ColumnName="YoneticiID" />
+                <ScalarProperty Name="YoneticiAdi" ColumnName="YoneticiAdi" />
+                <ScalarProperty Name="YoneticiSifre" ColumnName="YoneticiSifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="YılmazHotelModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="CTarih" ColumnName="CTarih" />
+                <ScalarProperty Name="hesap" ColumnName="hesap" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="gTarih" ColumnName="gTarih" />
+                <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+                <ScalarProperty Name="MusSoyadi" ColumnName="MusSoyadi" />
+                <ScalarProperty Name="Musadi" ColumnName="Musadi" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odalar">
+            <EntityTypeMapping TypeName="YılmazHotelModel.Odalar">
+              <MappingFragment StoreEntitySet="Odalar">
+                <ScalarProperty Name="OdaDolulukDurumu" ColumnName="OdaDolulukDurumu" />
+                <ScalarProperty Name="OdaGunlukTutar" ColumnName="OdaGunlukTutar" />
+                <ScalarProperty Name="BalkonDurumu" ColumnName="BalkonDurumu" />
+                <ScalarProperty Name="BulunduguKat" ColumnName="BulunduguKat" />
+                <ScalarProperty Name="YatakSayisi" ColumnName="YatakSayisi" />
+                <ScalarProperty Name="OdaNo" ColumnName="OdaNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personeller">
+            <EntityTypeMapping TypeName="YılmazHotelModel.Personeller">
+              <MappingFragment StoreEntitySet="Personeller">
+                <ScalarProperty Name="PersonelMaas" ColumnName="PersonelMaas" />
+                <ScalarProperty Name="P_KulanndıgıIzın" ColumnName="P_KulanndıgıIzın" />
+                <ScalarProperty Name="PersonelBolum" ColumnName="PersonelBolum" />
+                <ScalarProperty Name="PersonelMail" ColumnName="PersonelMail" />
+                <ScalarProperty Name="PersonelTelefon" ColumnName="PersonelTelefon" />
+                <ScalarProperty Name="PersonelSoyadi" ColumnName="PersonelSoyadi" />
+                <ScalarProperty Name="PersonelAdi" ColumnName="PersonelAdi" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stokDurumu">
+            <EntityTypeMapping TypeName="YılmazHotelModel.stokDurumu">
+              <MappingFragment StoreEntitySet="stokDurumu">
+                <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+                <ScalarProperty Name="urunVarmiYokmu" ColumnName="urunVarmiYokmu" />
+                <ScalarProperty Name="urunDurumMesaj" ColumnName="urunDurumMesaj" />
+                <ScalarProperty Name="urunAdet" ColumnName="urunAdet" />
+                <ScalarProperty Name="urunBirimi" ColumnName="urunBirimi" />
+                <ScalarProperty Name="urunAdi" ColumnName="urunAdi" />
+                <ScalarProperty Name="urunGno" ColumnName="urunGno" />
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunGrup">
+            <EntityTypeMapping TypeName="YılmazHotelModel.urunGrup">
+              <MappingFragment StoreEntitySet="urunGrup">
+                <ScalarProperty Name="urunKategoriAdi" ColumnName="urunKategoriAdi" />
+                <ScalarProperty Name="urunGno" ColumnName="urunGno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yekili_Kisiler">
+            <EntityTypeMapping TypeName="YılmazHotelModel.Yekili_Kisiler">
+              <MappingFragment StoreEntitySet="Yekili_Kisiler">
+                <ScalarProperty Name="YetkiliSifre" ColumnName="YetkiliSifre" />
+                <ScalarProperty Name="YetkiliKadi" ColumnName="YetkiliKadi" />
+                <ScalarProperty Name="YetkiliAdi" ColumnName="YetkiliAdi" />
+                <ScalarProperty Name="YoneticiID" ColumnName="YoneticiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

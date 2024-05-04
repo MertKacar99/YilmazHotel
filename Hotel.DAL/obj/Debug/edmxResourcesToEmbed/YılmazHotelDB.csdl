@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YılmazHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Yonetim_kisiler">
+    <Key>
+      <PropertyRef Name="YoneticiID" />
+    </Key>
+    <Property Name="YoneticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YoneticiAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YoneticiSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yoneticiKadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="YılmazHotelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Yonetim_kisiler" EntityType="Self.Yonetim_kisiler" />
+    <EntitySet Name="Musteriler" EntityType="YılmazHotelModel.Musteriler" />
+    <EntitySet Name="Odalar" EntityType="YılmazHotelModel.Odalar" />
+    <AssociationSet Name="FK__Musterile__OdaNo__7F2BE32F" Association="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F">
+      <End Role="Odalar" EntitySet="Odalar" />
+      <End Role="Musteriler" EntitySet="Musteriler" />
+    </AssociationSet>
+    <EntitySet Name="Personeller" EntityType="YılmazHotelModel.Personeller" />
+    <EntitySet Name="stokDurumu" EntityType="YılmazHotelModel.stokDurumu" />
+    <EntitySet Name="urunGrup" EntityType="YılmazHotelModel.urunGrup" />
+    <AssociationSet Name="FK__stokDurum__urunG__17F790F9" Association="YılmazHotelModel.FK__stokDurum__urunG__17F790F9">
+      <End Role="urunGrup" EntitySet="urunGrup" />
+      <End Role="stokDurumu" EntitySet="stokDurumu" />
+    </AssociationSet>
+    <EntitySet Name="Yekili_Kisiler" EntityType="YılmazHotelModel.Yekili_Kisiler" />
+  </EntityContainer>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriID" />
+    </Key>
+    <Property Name="MusteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Musadi" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="MusSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="OdaNo" Type="Int32" />
+    <Property Name="gTarih" Type="DateTime" Precision="3" />
+    <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="hesap" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CTarih" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Odalar" Relationship="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F" FromRole="Musteriler" ToRole="Odalar" />
+  </EntityType>
+  <EntityType Name="Odalar">
+    <Key>
+      <PropertyRef Name="OdaNo" />
+    </Key>
+    <Property Name="OdaNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YatakSayisi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BulunduguKat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="BalkonDurumu" Type="Boolean" />
+    <Property Name="OdaGunlukTutar" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OdaDolulukDurumu" Type="Boolean" />
+    <NavigationProperty Name="Musteriler" Relationship="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F" FromRole="Odalar" ToRole="Musteriler" />
+  </EntityType>
+  <Association Name="FK__Musterile__OdaNo__7F2BE32F">
+    <End Type="YılmazHotelModel.Odalar" Role="Odalar" Multiplicity="0..1" />
+    <End Type="YılmazHotelModel.Musteriler" Role="Musteriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Odalar">
+        <PropertyRef Name="OdaNo" />
+      </Principal>
+      <Dependent Role="Musteriler">
+        <PropertyRef Name="OdaNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Personeller">
+    <Key>
+      <PropertyRef Name="PersonelNo" />
+    </Key>
+    <Property Name="PersonelNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonelAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelSoyadi" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelTelefon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelMail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelBolum" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="P_KulanndıgıIzın" Type="Int32" />
+    <Property Name="PersonelMaas" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="stokDurumu">
+    <Key>
+      <PropertyRef Name="urunID" />
+    </Key>
+    <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urunGno" Type="Int32" />
+    <Property Name="urunAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="urunBirimi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="urunAdet" Type="Int32" />
+    <Property Name="urunDurumMesaj" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="urunVarmiYokmu" Type="Boolean" />
+    <Property Name="urunFiyat" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="urunGrup" Relationship="YılmazHotelModel.FK__stokDurum__urunG__17F790F9" FromRole="stokDurumu" ToRole="urunGrup" />
+  </EntityType>
+  <EntityType Name="urunGrup">
+    <Key>
+      <PropertyRef Name="urunGno" />
+    </Key>
+    <Property Name="urunGno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urunKategoriAdi" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="stokDurumu" Relationship="YılmazHotelModel.FK__stokDurum__urunG__17F790F9" FromRole="urunGrup" ToRole="stokDurumu" />
+  </EntityType>
+  <Association Name="FK__stokDurum__urunG__17F790F9">
+    <End Type="YılmazHotelModel.urunGrup" Role="urunGrup" Multiplicity="0..1" />
+    <End Type="YılmazHotelModel.stokDurumu" Role="stokDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunGrup">
+        <PropertyRef Name="urunGno" />
+      </Principal>
+      <Dependent Role="stokDurumu">
+        <PropertyRef Name="urunGno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Yekili_Kisiler">
+    <Key>
+      <PropertyRef Name="YoneticiID" />
+    </Key>
+    <Property Name="YoneticiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YetkiliAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YetkiliKadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YetkiliSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="48dae29d37974c588e07e19dbacdf8e7" Name="Diagram1">
+        <EntityTypeShape EntityType="YılmazHotelModel.Yonetim_kisiler" Width="1.75" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YılmazHotelModel.Musteriler" Width="1.5" PointX="6.25" PointY="1.125" />
+        <EntityTypeShape EntityType="YılmazHotelModel.Odalar" Width="1.5" PointX="3.125" PointY="1.25" />
+        <AssociationConnector Association="YılmazHotelModel.FK__Musterile__OdaNo__7F2BE32F" />
+        <EntityTypeShape EntityType="YılmazHotelModel.Personeller" Width="1.5" PointX="0.75" PointY="3.375" />
+        <EntityTypeShape EntityType="YılmazHotelModel.stokDurumu" Width="1.5" PointX="6.375" PointY="5" />
+        <EntityTypeShape EntityType="YılmazHotelModel.urunGrup" Width="1.5" PointX="3.375" PointY="5.5" />
+        <AssociationConnector Association="YılmazHotelModel.FK__stokDurum__urunG__17F790F9" />
+        <EntityTypeShape EntityType="YılmazHotelModel.Yekili_Kisiler" Width="1.5" PointX="0.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
